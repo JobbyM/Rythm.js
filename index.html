@@ -44,6 +44,10 @@
 <pre><code>npm install rythm.js
 </code></pre>
 
+
+<h2>
+<a id="rythm-object" class="anchor" href="#rythm-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Good old way</h2>
+
 <p>Import rythm into your page</p>
 
 <div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>../rythm.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
@@ -57,6 +61,16 @@
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> rythm <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Rythm</span>();
 <span class="pl-smi">rythm</span>.<span class="pl-en">setMusic</span>(<span class="pl-s"><span class="pl-pds">"</span>../examples/sample.mp3<span class="pl-pds">"</span></span>);
 <span class="pl-smi">rythm</span>.<span class="pl-c1">start</span>();</pre></div>
+
+<h2>
+<a id="rythm-object" class="anchor" href="#rythm-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ES6</h2>
+
+<div class="highlight highlight-source-js">
+  <pre><span class="pl-k">import</span> Rythm <span class="pl-k">from</span> 'rythm.js'
+  <span class="pl-k">const</span> rythm <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Rythm</span>();
+  <span class="pl-smi">rythm</span>.<span class="pl-en">setMusic</span>(<span class="pl-s"><span class="pl-pds">"</span>../examples/sample.mp3<span class="pl-pds">"</span></span>);
+  <span class="pl-smi">rythm</span>.<span class="pl-c1">start</span>();</pre>
+</div>
 
 <h1>
 <a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h1>
@@ -88,6 +102,12 @@
 <span class="pl-c"> * @audioUrl : '../example/mysong.mp3'</span>
 <span class="pl-c"> */</span>
 <span class="pl-smi">rythm</span>.<span class="pl-en">setMusic</span>(audioUrl);
+
+
+<span class="pl-c">/* Used to collaborate with other players library</span>
+<span class="pl-c"> * You can connect Rythm to an audioElement, and then control the audio with your other player</span>
+<span class="pl-c"> */</span>
+<span class="pl-smi">rythm</span>.<span class="pl-en">connectExternalAudioElement</span>(audioElement);
 
 <span class="pl-c">/* Adjust music's gain.</span>
 <span class="pl-c"> * @value : Number</span>
