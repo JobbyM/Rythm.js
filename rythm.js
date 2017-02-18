@@ -51,6 +51,7 @@ function Rythm(){
     that._rythmInputType = that._rythmInputTypeList['TRACK'];
     that._source = that._audioCtx.createMediaElementSource(that._audio);
     that._connectSource(that._source);
+    that._audio.addEventListener("ended", that.stop);
   }
 
   that.plugMicrophone = function plugMicrophone(){
@@ -101,12 +102,13 @@ function Rythm(){
     that.rythmMapping.forEach(function(mappingItem){
       var elements = document.getElementsByClassName(mappingItem.elementClass);
       for(var i = 0; i < elements.length; i++){
-        elements[i].style.transform = 'scale('+1+')'
+        elements[i].style.transform = 'initial'
       }
     })
     that._init();
     that.stopped = true;
   }
+
 
   function renderRythm() {
     if(that.stopped){
