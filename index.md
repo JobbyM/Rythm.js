@@ -4,11 +4,11 @@ Rythm.js
 [![Build Status](https://travis-ci.org/Okazari/Rythm.js.svg?branch=master)](https://travis-ci.org/Okazari/Rythm.js)
 [![Code Climate](https://codeclimate.com/github/Okazari/Rythm.js/badges/gpa.svg)](https://codeclimate.com/github/Okazari/Rythm.js/code)
 
-Demo at : http://okazari.github.io/Rythm.js/
+Demo at : https://okazari.github.io/Rythm.js/
 
-A javascript library that makes your page dancing.
+A javascript library that makes your page dance.
 
-Actually in developpement
+Currently in development
 
 Getting started
 ===============
@@ -19,10 +19,15 @@ Install with npm
 npm install rythm.js
 ```
 
+CDN: https://unpkg.com/rythm.js/
+
+Good old way
+------------
+
 Import rythm into your page
 
 ```html
-<script type="text/javascript" src="../rythm.js"></script>
+<script type="text/javascript" src="/path/to/rythm.js"></script>
 ```
 
 Add one of the rythm css classes to indicate which element will dance.
@@ -34,7 +39,17 @@ Add one of the rythm css classes to indicate which element will dance.
 Create a Rythm object and give it your audio url then use the start function.
 ```javascript
 var rythm = new Rythm();
-rythm.setMusic("../examples/sample.mp3");
+rythm.setMusic("path/to/sample.mp3");
+rythm.start();
+```
+
+ES6 module
+----------
+
+```js
+import Rythm from 'rythm.js'
+const rythm = new Rythm();
+rythm.setMusic("path/to/sample.mp3");
 rythm.start();
 ```
 
@@ -70,6 +85,11 @@ rythm.maxValueHistory = value;
  */
 rythm.setMusic(audioUrl);
 
+/* Used to collaborate with other players library
+ * You can connect Rythm to an audioElement, and then control the audio with your other player
+ */
+rythm.connectExternalAudioElement(audioElement)
+
 /* Adjust music's gain.
  * @value : Number
  */
@@ -87,6 +107,7 @@ rythm.addRythm(elementClass, danceType, startValue, nbValue);
 
 /* Plug your computer microphone to rythm.js
  * This function return a promise resolved when the microphone is up.
+ * Require your website to be run in HTTPS
  */
 rythm.plugMicrophone().then(function(){...})
 
@@ -130,5 +151,5 @@ Any pull request will be apreciated. You can start coding on this project follow
  + Fork the project
  + Clone your repository
  + run ```npm install```
- + run ```gulp``` in the main folder to launch a development webserver.
+ + run ```nom start``` in the main folder to launch a development webserver.
  + Enjoy the rythm.
