@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Rythm.js by Okazari</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/custom.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name rythm-high">Rythm.js</h1>
+      <h2 class="project-tagline">Let your page dance.</h2>
+      <a href="https://github.com/Okazari/Rythm.js" class="btn rythm-bass">View on GitHub</a>
+      <a href="https://github.com/Okazari/Rythm.js/zipball/master" class="btn rythm-high">Download .zip</a>
+      <a href="https://github.com/Okazari/Rythm.js/tarball/master" class="btn rythm-medium">Download .tar.gz</a>
+    </section>
+    <section class="button-panel">
+      <a id="stopButton" class="btn custom">Stop Music</a>
+      <a id="startTrackButton" class="btn custom">Start track</a>
+      <a id="startMicButton" class="btn custom">Start Microphone</a>
+    </section>
+    <section class="main-content">
+      <h1>
+<a id="rythmjs" class="anchor" href="#rythmjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Rythm.js</h1>
+
+<p><a href="https://travis-ci.org/Okazari/Rythm.js"><img src="https://travis-ci.org/Okazari/Rythm.js.svg?branch=master" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/Okazari/Rythm.js/code"><img src="https://codeclimate.com/github/Okazari/Rythm.js/badges/gpa.svg" alt="Code Climate"></a></p>
+
+<p>Demo at : <a href="http://okazari.github.io/Rythm.js/">http://okazari.github.io/Rythm.js/</a></p>
+
+<p>A javascript library that makes your page dance.</p>
+
+<p>Currently in development</p>
+
+<h1>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting started</h1>
+
+<p>Install with npm</p>
+
+<pre><code>npm install rythm.js
+</code></pre>
+
+<p>Import rythm into your page</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>../rythm.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>Add one of the rythm css classes to indicate which element will dance.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>rythm-bass<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<p>Create a Rythm object and give it your audio url then use the start function.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> rythm <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Rythm</span>();
+<span class="pl-smi">rythm</span>.<span class="pl-en">setMusic</span>(<span class="pl-s"><span class="pl-pds">"</span>../examples/sample.mp3<span class="pl-pds">"</span></span>);
+<span class="pl-smi">rythm</span>.<span class="pl-c1">start</span>();</pre></div>
+
+<h1>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h1>
+
+<h2>
+<a id="rythm-object" class="anchor" href="#rythm-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Rythm object</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> rythm <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Rythm</span>();
+
+<span class="pl-c">/* The starting scale is the minimum scale your elements will take (Scale ratio is startingScale + (pulseRatio * currentPulse));</span>
+<span class="pl-c"> * Value in percentage between 0-1</span>
+<span class="pl-c"> * Default 0.75</span>
+<span class="pl-c"> */</span>
+<span class="pl-smi">rythm</span>.<span class="pl-smi">startingScale</span> <span class="pl-k">=</span> value;
+
+<span class="pl-c">/* The pulse ratio is be the maximum additionnal scale your element will take (Scale ratio is startingScale + (pulseRatio * currentPulse))</span>
+<span class="pl-c"> * Value in percentage between 0-1</span>
+<span class="pl-c"> * Default 0.30</span>
+<span class="pl-c"> */</span>
+<span class="pl-smi">rythm</span>.<span class="pl-smi">pulseRatio</span> <span class="pl-k">=</span> value;
+
+<span class="pl-c">/* The max value history represent the number of passed value that will be stored to evaluate the current pulse.</span>
+<span class="pl-c"> * Int value, minimum 1</span>
+<span class="pl-c"> * Default 100</span>
+<span class="pl-c"> */</span>
+<span class="pl-smi">rythm</span>.<span class="pl-smi">maxValueHistory</span> <span class="pl-k">=</span> value;
+
+<span class="pl-c">/* Set the music the page will dance to.</span>
+<span class="pl-c"> * @audioUrl : '../example/mysong.mp3'</span>
+<span class="pl-c"> */</span>
+<span class="pl-smi">rythm</span>.<span class="pl-en">setMusic</span>(audioUrl);
+
+<span class="pl-c">/* Adjust music's gain.</span>
+<span class="pl-c"> * @value : Number</span>
+<span class="pl-c"> */</span>
+<span class="pl-smi">rythm</span>.<span class="pl-en">setGain</span>(value);
+
+<span class="pl-c">/* Add your own rythm-class</span>
+<span class="pl-c"> * @elementClass: Class that you want to link your rythm to.</span>
+<span class="pl-c"> * @danceType : Atm just use "size";</span>
+<span class="pl-c"> * @startValue: The starting frequence of your rythm.</span>
+<span class="pl-c"> * @nbValue: The number of frequences of your rythm.</span>
+<span class="pl-c"> * 1024 Frequences, your rythm will react to the average of your selected frequences.</span>
+<span class="pl-c"> * Exemples : bass 0-10 ; medium 150-40 ; high 500-100</span>
+<span class="pl-c"> */</span>
+<span class="pl-smi">rythm</span>.<span class="pl-en">addRythm</span>(elementClass, danceType, startValue, nbValue);
+
+<span class="pl-c">/* Plug your computer microphone to rythm.js</span>
+<span class="pl-c"> * This function return a promise resolved when the microphone is up.</span>
+<span class="pl-c"> */</span>
+<span class="pl-smi">rythm</span>.<span class="pl-en">plugMicrophone</span>().<span class="pl-en">then</span>(<span class="pl-k">function</span>(){<span class="pl-k">...</span>})
+
+<span class="pl-c">//Let's dance</span>
+<span class="pl-smi">rythm</span>.<span class="pl-c1">start</span>();
+
+<span class="pl-c">//Stop the party</span>
+<span class="pl-smi">rythm</span>.<span class="pl-c1">stop</span>();</pre></div>
+
+<h2>
+<a id="classes" class="anchor" href="#classes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes</h2>
+
+<ul>
+<li>rythm-bass</li>
+<li>rythm-medium</li>
+<li>rythm-high</li>
+</ul>
+
+<h2>
+<a id="custom-classes" class="anchor" href="#custom-classes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom-classes</h2>
+
+<p>You can use the <code>addRythm</code> function to make your own classes listen to specifics frequences.
+Here is how the basics classes are created :</p>
+
+<ul>
+<li><code>addRythm('rythm-bass','size',0,10);</code></li>
+<li><code>addRythm('rythm-medium','size',150,40);</code></li>
+<li><code>addRythm('rythm-high','size',500,100);</code></li>
+</ul>
+
+<h1>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h1>
+
+<ul>
+<li>You actually can add classes to make your HTML Elements pulse following the rythm of your music.</li>
+</ul>
+
+<h2>
+<a id="future" class="anchor" href="#future" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Future</h2>
+
+<ul>
+<li>Add more rythm class frequences</li>
+<li>Add rythm move class (pulse, rotate etc...)</li>
+</ul>
+
+<h1>
+<a id="contribute" class="anchor" href="#contribute" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contribute</h1>
+
+<p>Any pull request will be apreciated. You can start coding on this project following this steps :</p>
+
+<ul>
+<li>Fork the project</li>
+<li>Clone your repository</li>
+<li>run <code>npm install</code>
+</li>
+<li>run <code>npm start</code> in the main folder to launch a development webserver.</li>
+<li>Enjoy the rythm.</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/Okazari/Rythm.js">Rythm.js</a> is maintained by <a href="https://github.com/Okazari">Okazari</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script src="rythm.js"></script>
+            <script type="text/javascript">
+             window.onload = function(){
+              var rythm = new Rythm();
+              rythm.startingScale  = 0.70;
+              rythm.pulseRatio  = 0.40;
+              rythm.maxValueHistory = 50;
+              rythm.setMusic('DJSona.mp3');
+              rythm.start();
+              rythm.setGain(0.1);
+              document.getElementById('startTrackButton').addEventListener('click',function(){
+                if(rythm.stopped === false){
+                  rythm.stop();
+                }
+                rythm.setMusic('DJSona.mp3');
+                rythm.start();
+                rythm.setGain(0.1);
+              })
+              document.getElementById('startMicButton').addEventListener('click',function(){
+                if(rythm.stopped === false){
+                  rythm.stop();
+                }
+                rythm.plugMicrophone().then(function(){
+                  rythm.start();
+                  rythm.setGain(0.8);
+                })
+              })
+              document.getElementById('stopButton').addEventListener('click',function(){
+                  if(rythm.stopped === false){
+                    rythm.stop();
+                  }
+              })
+            }
+            </script>
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-75616369-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
