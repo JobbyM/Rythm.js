@@ -1,8 +1,9 @@
 function Rythm(){
 
   var that = this;
-
-  that._audioCtx = new AudioContext();
+  
+  that._browserAudioCtx = AudioContext || webkitAudioContext
+  that._audioCtx = new that._browserAudioCtx();
 
   that._init = function(){
     that._analyser = that._audioCtx.createAnalyser();
