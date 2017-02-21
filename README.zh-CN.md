@@ -70,7 +70,7 @@ rythm.startingScale = value;
 
 /* pulseRatio is 是你的元素接受的最大的缩放值 (缩放比例是 startingScale + (pulseRatio * currentPulse))
  * Value 取值范围在 0-1
- * Default 0.30
+ * Default 0.50
  */
 rythm.pulseRatio = value;
 
@@ -106,7 +106,7 @@ rythm.setGain(value);
 rythm.addRythm(elementClass, danceType, startValue, nbValue);
 
 /* 安装你的电脑麦克风到 rythm.js
- * This function return a promise resolved when the microphone is up.
+ * 函数返回一个promise 解析，当麦克风可用。
  * 要求你的网站是 HTTPS
  */
 rythm.plugMicrophone().then(function(){...})
