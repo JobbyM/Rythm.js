@@ -74,7 +74,7 @@ rythm.startingScale = value;
  */
 rythm.pulseRatio = value;
 
-/* 历史中的最大值代表传入的数值将会被存储起来去计算currentPulse。
+/* maxValueHistory代表传入的会被存储起来去计算currentPulse的数值的数量
  * 整数类型 value, 最小值 1
  * 默认值为 100
  */
@@ -90,7 +90,7 @@ rythm.setMusic(audioUrl);
  */
 rythm.connectExternalAudioElement(audioElement)
 
-/* 调整音乐的 gain.
+/* 调整音乐的音量。
  * @value : Number
  */
 rythm.setGain(value);
